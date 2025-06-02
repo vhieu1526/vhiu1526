@@ -4,197 +4,288 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gửi đến em 💌</title>
+  <title>Xin lỗi em béiu!</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
       font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      background: linear-gradient(to bottom right, #fce4ec, #f8bbd0);
+      color: #880e4f;
+      margin: 0;
       overflow: hidden;
-      position: relative;
     }
 
-    h1,
-    h2 {
-      color: white;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    .container {
+      background-color: #ffffffcc;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 60px auto;
       text-align: center;
-      margin: 10px;
-    }
-
-    h1 {
-      font-size: 3em;
-    }
-
-    h2 {
-      font-weight: normal;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
+      position: relative;
       z-index: 10;
     }
 
-    button {
-      padding: 15px 25px;
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    p {
       font-size: 1.2em;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    #yesBtn {
-      background-color: #ff4d6d;
-      color: white;
-    }
-
-    #yesBtn:hover {
-      background-color: #ff3366;
-    }
-
-    #noBtn {
-      background-color: #ccc;
-      color: black;
-      position: relative;
-      transition: top 0.3s, left 0.3s;
-    }
-
-    #continueBtn {
-      margin-top: 20px;
-      background-color: white;
-      color: #ff4d6d;
-      font-weight: bold;
+      line-height: 1.6;
     }
 
     .heart {
-      position: absolute;
-      width: 40px;
-      /* tăng kích thước */
-      height: 40px;
-      background-image: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
-      /* trái tim đỏ */
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.9;
-      animation: float 6s linear infinite;
-      z-index: 0;
+      font-size: 3em;
+      animation: pulse 1.5s infinite;
+      color: #e91e63;
     }
 
-
-
-    @keyframes float {
+    @keyframes pulse {
       0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
+        transform: scale(1);
       }
 
       50% {
-        transform: translateY(50vh) scale(1.2);
-        opacity: 0.6;
+        transform: scale(1.2);
       }
 
       100% {
-        transform: translateY(100vh) scale(1.4);
+        transform: scale(1);
+      }
+    }
+
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+
+    .slideshow {
+      max-width: 100%;
+      margin-top: 30px;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .falling-hearts,
+    .falling-words {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart-fall,
+    .word-fall {
+      position: absolute;
+      animation: fall 6s linear infinite;
+      white-space: nowrap;
+    }
+
+    .heart-fall {
+      color: #e91e63;
+      font-size: 24px;
+    }
+
+    .word-fall {
+      color: #ad1457;
+      font-size: 18px;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh);
         opacity: 0;
       }
     }
 
-    #confess {
+    #thank-you {
       display: none;
-      flex-direction: column;
-      align-items: center;
+      margin-top: 20px;
+      font-size: 1.3em;
+      color: #d81b60;
+      font-weight: bold;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 30px 15px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+
+      .heart {
+        font-size: 2em;
+      }
+
+      button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+      }
+
+      .word-fall {
+        font-size: 14px !important;
+      }
+
+      .heart-fall {
+        font-size: 18px !important;
+      }
+
+      .slideshow img {
+        border-radius: 8px;
+      }
+    }
+
+    body {
+      overflow-x: hidden;
+      overflow-y: visible;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    button {
+      min-height: 44px;
+      /* chuẩn tối thiểu Apple khuyên dùng */
     }
   </style>
 </head>
 
 <body>
-  <!-- Lời chào -->
-  <div id="intro">
-    <h1>Anh xin lỗi vì lúc trước đã quyết định bỏ rơi em!</h1>
-    <h2>Hôm sau lễ anh với mẹ mới ra bệnh viện tỉnh đi khám tại anh bị đi ngoài toàn ra máu thì mới ra bệnh đại tràng sắp thành ung thư đại tràng rồi anh còn đi khám tổng quát nữa thì trong phổi cũng có khối u, nếu mà đại tràng mà bị thì có khả năng bị cả phổi nữa! THuốc để điều trị đại tràng thì nó đắt cắt cổ. Nên hôm đấy về anh suy nghỉ nhiều lắm! Lúc đấy suy nghỉ của anh là không muốn em phải chịu khổ cùng anh, xong rồi anh mới đưa ra quyết định sai lầm là bỏ em. Hôm đấy anh đau lắm! Anh không dám nghe em gọi điện vì lúc đấy a khóc mất rồi. nhưng rồi anh không thể chịu nổi khi không có em. Anh nhớ em nhiều lắm. Anh xin lỗi em! Anh biết những lời anh nhắm cho em hôm đấy làm em tổn thương nhiều lắm! Anh yêu em nhiều lám! không bao giờ thấy chán em cả và cũng không bao giờ hết yêu em! </h2>
-    <button id="continueBtn">Tiếp tục 💌</button>
-  </div>
+  <!-- Nhạc nền -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ audio.
+  </audio>
 
-  <!-- Câu tỏ tình -->
-  <div id="confess">
-    <h1>💖 Anh mong em có thể tha thứ và cho anh được tiếp tục đồng hành cùng em! 💖</h1>
-    <div class="buttons">
-      <button id="yesBtn">Đồng ý 🥰</button>
-      <button id="noBtn">Không 😢</button>
+  <!-- Trái tim và chữ rơi -->
+  <div class="falling-hearts" id="hearts"></div>
+  <div class="falling-words" id="words"></div>
+
+  <!-- Nội dung chính -->
+  <div class="container">
+    <div class="heart">💗</div>
+    <h1>Xin lỗi em...</h1>
+    <p>
+      Anh biết mình đã sai và làm em buồn. <br />
+      Anh thực sự hối hận về những gì đã làm. <br />
+      Mong em hãy tha thứ cho anh. <br />
+      Anh yêu em nhiều lắm...!
+    </p>
+    <button onclick="startEffects()">Em tha thứ cho anh</button>
+
+    <div id="thank-you">Cảm ơn em đã tha thứ cho anh 💖</div>
+
+    <!-- Slideshow ảnh -->
+    <div class="slideshow">
+      <img id="slideshow-img" src="thu1.jpg" alt="Ảnh kỷ niệm">
     </div>
   </div>
 
   <script>
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
-    const continueBtn = document.getElementById('continueBtn');
-    const intro = document.getElementById('intro');
-    const confess = document.getElementById('confess');
+    const phrases = [
+      'Thương em...',
+      'Anh yêu em nhiều lắm...',
+      'Anh không thể sống khi không có em...',
+      'Anh nhớ em...',
+      'Em là tất cả với anh'
+    ];
 
-    const redShades = ['#ff0000', '#e60000', '#ff4d4d', '#cc0000', '#ff6666', '#ff1a1a', '#ff3300'];
+    let heartInterval, wordInterval;
+    let effectsStarted = false;
 
-    // 1. Nút tiếp tục
-    continueBtn.addEventListener('click', () => {
-      intro.style.display = 'none';
-      confess.style.display = 'flex';
-    });
-
-    // 2. Nút "Đồng ý"
-    yesBtn.addEventListener('click', () => {
-      confess.style.display = 'none';
-
-      const message = document.createElement('div');
-      message.innerHTML = 'Cảm ơn em đã cho anh thêm một cơ hội nữa! Anh hứa sẽ không bao giờ bỏ em hay là có ý định đấy thêm một lần nào nữa. Yêu em! 💖';
-      message.style.position = 'absolute';
-      message.style.top = '50%';
-      message.style.left = '50%';
-      message.style.transform = 'translate(-50%, -50%)';
-      message.style.fontSize = '2em';
-      message.style.color = 'white';
-      message.style.textAlign = 'center';
-      message.style.textShadow = '2px 2px 5px rgba(0,0,0,0.4)';
-      document.body.appendChild(message);
-
-      // Thả tim
-      for (let i = 0; i < 50; i++) {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.style.backgroundColor = redShades[Math.floor(Math.random() * redShades.length)];
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-      }
-    });
-
-    // 3. Nút "Không" né chuột
-    noBtn.addEventListener('mouseover', () => {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 100);
-      noBtn.style.position = 'absolute';
-      noBtn.style.left = x + 'px';
-      noBtn.style.top = y + 'px';
-    });
-
-    setInterval(() => {
+    function createHeart() {
       const heart = document.createElement('div');
-      heart.classList.add('heart');
+      heart.className = 'heart-fall';
+      heart.innerText = '💖';
       heart.style.left = Math.random() * 100 + 'vw';
-      // Bỏ dòng chọn màu ngẫu nhiên để mặc định là hình đỏ rồi
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 300);
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.getElementById('hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
 
+    function createFallingText() {
+      const word = document.createElement('div');
+      word.className = 'word-fall';
+      word.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+      word.style.left = Math.random() * 90 + 'vw';
+      word.style.fontSize = (Math.random() * 10 + 16) + 'px';
+      word.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      document.getElementById('words').appendChild(word);
+      setTimeout(() => word.remove(), 7000);
+    }
+
+    function startEffects() {
+      if (effectsStarted) return;
+      effectsStarted = true;
+
+      // Hiện lời cảm ơn
+      document.getElementById("thank-you").style.display = "block";
+
+      // Bắt đầu hiệu ứng rơi
+      heartInterval = setInterval(createHeart, 300);
+      wordInterval = setInterval(createFallingText, 1000);
+    }
+
+    // Slideshow ảnh
+    const images = ['thu1.jpg', 'thu2.jpg', 'thu3.jpg'];
+    let current = 0;
+    setInterval(() => {
+      current = (current + 1) % images.length;
+      document.getElementById('slideshow-img').src = images[current];
+    }, 3000);
   </script>
 </body>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </html>
